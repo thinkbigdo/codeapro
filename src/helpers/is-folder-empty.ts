@@ -1,3 +1,4 @@
+import emoji from "node-emoji";
 import chalk from "chalk";
 import { readdirSync, lstatSync } from "node:fs";
 import path from "path";
@@ -33,7 +34,9 @@ export function isFolderEmpty(root: string, name: string): boolean {
 
   if (conflicts.length > 0) {
     console.log(
-      `The directory ${chalk.green(name)} contains files that could conflict:`
+      `${emoji.emojify(":red_circle:")} The directory ${chalk.green(
+        name
+      )} contains files that could conflict:`
     );
     console.log();
     for (const file of conflicts) {
@@ -50,7 +53,7 @@ export function isFolderEmpty(root: string, name: string): boolean {
     }
     console.log();
     console.log(
-      "Either try using a new directory name, or remove the files listed above."
+      "  Either try using a new directory name, or remove the files listed above."
     );
     console.log();
     return false;
