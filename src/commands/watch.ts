@@ -1,15 +1,13 @@
-const readFileSync = require("node:fs").readFileSync;
-const existsSync = require("node:fs").existsSync;
-const watch = require("node:fs").watch;
-const join = require("node:path").join;
-const dirname = require("node:path").dirname;
-const spawn = require("node:child_process").spawn;
-const md5 = require("md5");
-require("log-timestamp");
+import { readFileSync, existsSync, watch } from "node:fs";
+import { join, dirname } from "node:path";
+import { spawn } from "node:child_process";
+import md5 from "md5";
 
 const challengesDir = join(".", "challenges");
 
 function run() {
+  require("log-timestamp");
+
   console.log(`Watching for file changes on ${challengesDir}`);
 
   let md5Files = {};

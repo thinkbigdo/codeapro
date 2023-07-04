@@ -6,7 +6,7 @@ import runWatch from "./commands/watch";
 
 const program = new Command();
 
-program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.9");
+program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.10");
 
 program
   .command("init", { isDefault: true })
@@ -31,7 +31,7 @@ program
 program
   .command("watch")
   .description("Run the tests on a challenge when a file is changed.")
-  .argument("<name>")
+  .argument("[name]")
   .action(async () => {
     await runWatch();
   });
