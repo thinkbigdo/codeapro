@@ -7,8 +7,8 @@ import getPkgManager from "./helpers/get-pkg-manager";
 
 const root = ".";
 
-const username = "deckerlabs";
-const name = "challenges-base";
+const username = "thinkbigdo";
+const name = "challenges-base-ts";
 const branch = "main";
 const filePath = "";
 const packageManager = getPkgManager();
