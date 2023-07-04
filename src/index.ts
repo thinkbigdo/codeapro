@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import runInit from "./commands/init";
+import runTest from "./commands/test";
 
 const program = new Command();
 
-program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.5");
+program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.7");
 
 program
   .command("init", { isDefault: true })
@@ -15,6 +16,15 @@ program
   .option("--usePnpm", "Use pnpm as the package manager.")
   .action(async (str, opts) => {
     await runInit(opts);
+  });
+
+program
+  .command("test")
+  .description("Run the tests for a specific challenge.")
+  .argument("<challenge name>")
+  .argument("[solution file]")
+  .action(async (challenge, solution) => {
+    await runTest(challenge, solution);
   });
 
 program.parse();
