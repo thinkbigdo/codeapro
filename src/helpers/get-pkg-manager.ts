@@ -1,14 +1,13 @@
 type PackageManager = "npm" | "pnpm" | "yarn";
 
-export default function getPkgManager(): PackageManager {
-  const packageManager =
-    process.argv.indexOf("--useNpm") !== -1
-      ? "npm"
-      : process.argv.indexOf("--usePnpm") !== -1
-      ? "pnpm"
-      : process.argv.indexOf("--useYarn") !== -1
-      ? "yarn"
-      : "";
+export default function getPkgManager(opts): PackageManager {
+  const packageManager = opts.useNpm
+    ? "npm"
+    : opts.usePnpm
+    ? "pnpm"
+    : opts.useYarn
+    ? "yarn"
+    : "";
 
   if (packageManager) {
     return packageManager;
