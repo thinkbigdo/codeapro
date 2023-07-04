@@ -2,10 +2,11 @@
 import { Command } from "commander";
 import runInit from "./commands/init";
 import runTest from "./commands/test";
+import runWatch from "./commands/watch";
 
 const program = new Command();
 
-program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.7");
+program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.8");
 
 program
   .command("init", { isDefault: true })
@@ -25,6 +26,14 @@ program
   .argument("[solution file]")
   .action(async (challenge, solution) => {
     await runTest(challenge, solution);
+  });
+
+program
+  .command("watch")
+  .description("Run the tests on a challenge when a file is changed.")
+  .argument("<name>")
+  .action(async () => {
+    await runWatch();
   });
 
 program.parse();
