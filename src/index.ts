@@ -6,7 +6,7 @@ import runWatch from "./commands/watch";
 
 const program = new Command();
 
-program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.10");
+program.name("codeapro").description("Code Like a Pro CLI.").version("0.0.11");
 
 program
   .command("init", { isDefault: true })
