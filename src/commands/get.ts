@@ -4,9 +4,9 @@ import { join } from "node:path";
 const HOST = "https://www.codeapro.com/";
 
 const typeMap = {
-  algo: "algorithm",
-  algorithm: "alglorithm",
-  algorithms: "algorithm",
+  algo: "algo",
+  algorithm: "algo",
+  algorithms: "algo",
   "front-end": "front-end",
   frontend: "frontend",
 };
@@ -47,10 +47,10 @@ async function run(type, challenge) {
 
   try {
     const result = await fetch(`${HOST}api/challenges/${challenge}`);
-    const data = await result.json();
     if (result.status === 404) {
       console.log("Challenge not found.");
     } else {
+      const data = await result.json();
       if (!data.tests) {
         console.log(
           "Algorithm Pro purchase is required to download the challenge requested."
