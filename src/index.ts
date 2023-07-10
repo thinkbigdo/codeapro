@@ -3,6 +3,7 @@ import { Command } from "commander";
 import runInit from "./commands/init";
 import runTest from "./commands/test";
 import runWatch from "./commands/watch";
+import runGet from "./commands/get";
 
 const program = new Command();
 
@@ -34,6 +35,15 @@ program
   .argument("[name]")
   .action(async () => {
     await runWatch();
+  });
+
+program
+  .command("get")
+  .description("Get specified challenge.")
+  .argument("<type>")
+  .argument("<challenge>")
+  .action(async (type, challenge) => {
+    await runGet(type, challenge);
   });
 
 program.parse();
