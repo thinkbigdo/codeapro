@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import isFolderCodeapro from "./helpers/is-folder-codeapro";
 import { Command } from "commander";
 import runInit from "./commands/init";
 import runTest from "./commands/test";
@@ -26,6 +27,9 @@ program
   .argument("<challenge name>")
   .argument("[solution file]")
   .action(async (challenge, solution) => {
+    if (!isFolderCodeapro) {
+      process.exit(1);
+    }
     await runTest(challenge, solution);
   });
 
@@ -34,6 +38,9 @@ program
   .description("Run the tests on a challenge when a file is changed.")
   .argument("[name]")
   .action(async () => {
+    if (!isFolderCodeapro) {
+      process.exit(1);
+    }
     await runWatch();
   });
 
@@ -43,6 +50,9 @@ program
   .argument("<type>")
   .argument("<challenge>")
   .action(async (type, challenge) => {
+    if (!isFolderCodeapro()) {
+      process.exit(1);
+    }
     await runGet(type, challenge);
   });
 

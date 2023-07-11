@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { readdirSync, lstatSync } from "node:fs";
 import path from "path";
 
-export function isFolderEmpty(root: string, name: string): boolean {
+function isFolderEmpty(root: string, name: string): boolean {
   const validFiles = [
     ".DS_Store",
     ".git",
