@@ -8,6 +8,7 @@ const HOST = "https://www.codeapro.com/";
 
 const typeMap = {
   algo: "algo",
+  algos: "algo",
   algorithm: "algo",
   algorithms: "algo",
   "front-end": "front-end",
