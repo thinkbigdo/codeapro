@@ -36,7 +36,7 @@ async function run(opts) {
   );
   console.log();
   console.log("  You are now ready to download challenges. Try:");
-  console.log(emoji.emojify(`  ${packageManager} run get algo twoSum`));
+  console.log(emoji.emojify(`  ${packageManager} run get twoSum`));
 }
 
 export default run;

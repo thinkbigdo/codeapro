@@ -47,13 +47,12 @@ program
 program
   .command("get")
   .description("Get specified challenge.")
-  .argument("<type>")
   .argument("<challenge>")
-  .action(async (type, challenge) => {
+  .action(async (challenge) => {
     if (!isFolderCodeapro()) {
       process.exit(1);
     }
-    await runGet(type, challenge);
+    await runGet(challenge);
   });
 
 program.parse();

@@ -6,16 +6,7 @@ import getPkgManager from "../helpers/get-pkg-manager";
 
 const HOST = "https://www.codeapro.com/";
 
-const typeMap = {
-  algo: "algo",
-  algos: "algo",
-  algorithm: "algo",
-  algorithms: "algo",
-  "front-end": "front-end",
-  frontend: "frontend",
-};
-
-function convertDescriptionToComment(description) {
+function convertDescriptionToComment(challenge, description) {
   const lines = description.split("\n");
   const wrappedLines: Array<string> = ["/*"];
   const maxLineLen = 64;
@@ -33,20 +24,18 @@ function convertDescriptionToComment(description) {
     }
     wrappedLines.push(words.slice(l).join(" "));
   });
+  const challengePath = challenge.replace(
+    /([A-Z])/g,
+    (_, char) => "-" + char.toLowerCase()
+  );
+  wrappedLines.push(
+    ` * Solution: https://www.codeapro.com/algos/${challengePath}`
+  );
   return wrappedLines.join("\n * ") + "\n */\n\n";
 }
 
-async function run(type, challenge) {
-  if (!(type in typeMap)) {
-    console.log(
-      `${emoji.emojify(":red_circle:")}  Type "${chalk.green(
-        type
-      )}" is invalid.`
-    );
-    return;
-  }
-
-  const path = join("challenges", typeMap[type], challenge);
+async function run(challenge) {
+  const path = join("challenges", "algo", challenge);
 
   if (existsSync(path)) {
     console.log(
@@ -90,11 +79,12 @@ async function run(type, challenge) {
         }
         try {
           writeFileSync(
-            join("challenges", typeMap[type], challenge, "index.ts"),
-            convertDescriptionToComment(data.description) + data.userSolution
+            join("challenges", "algo", challenge, "index.ts"),
+            convertDescriptionToComment(challenge, data.description) +
+              data.userSolution
           );
           writeFileSync(
-            join("challenges", typeMap[type], challenge, "test.ts"),
+            join("challenges", "algo", challenge, "test.ts"),
             data.tests
           );
           console.log(
