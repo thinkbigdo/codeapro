@@ -1,5 +1,8 @@
+import emoji from "node-emoji";
+import chalk from "chalk";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import getPkgManager from "../helpers/get-pkg-manager";
 
 const HOST = "https://www.codeapro.com/";
 
@@ -34,26 +37,49 @@ function convertDescriptionToComment(description) {
 
 async function run(type, challenge) {
   if (!(type in typeMap)) {
-    console.log(`Type "${type}" is invalid.`);
+    console.log(
+      `${emoji.emojify(":red_circle:")}  Type "${chalk.green(
+        type
+      )}" is invalid.`
+    );
     return;
   }
 
   const path = join("challenges", typeMap[type], challenge);
 
   if (existsSync(path)) {
-    console.log(`Directory already exists for ${path}`);
+    console.log(
+      `${emoji.emojify(
+        ":red_circle:"
+      )} Directory already exists for ${chalk.green(path)}.`
+    );
     return;
   }
 
   try {
+    const packageManager = getPkgManager({});
     const result = await fetch(`${HOST}api/challenges/${challenge}`);
     if (result.status === 404) {
-      console.log("Challenge not found.");
+      console.log(
+        `${emoji.emojify(":red_circle:")}  Challenge "${chalk.green(
+          challenge
+        )}" not found.`
+      );
     } else {
       const data = await result.json();
       if (!data.tests) {
         console.log(
-          "Algorithm Pro purchase is required to download the challenge requested."
+          `${emoji.emojify(
+            ":red_circle:"
+          )} Algorithm Pro purchase is required to download the challenge ${chalk.green(
+            challenge
+          )}.`
+        );
+        console.log();
+        console.log(
+          `   Learn more at ${chalk.green(
+            "https://www.codeapro.com/purchase"
+          )}.`
         );
       } else {
         try {
@@ -70,6 +96,18 @@ async function run(type, challenge) {
             join("challenges", typeMap[type], challenge, "test.ts"),
             data.tests
           );
+          console.log(
+            `${emoji.emojify(
+              ":honeybee: :rocket:"
+            )} Successfully downloaded ${chalk.green(challenge)}.`
+          );
+          console.log();
+          console.log(
+            `  Open ${chalk.green(
+              join(path, "index.ts")
+            )} in your favorite editor. Modify and check your code:`
+          );
+          console.log(emoji.emojify(`  ${packageManager} test ${challenge}`));
         } catch (e) {
           console.log(e.message);
         }

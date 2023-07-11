@@ -35,10 +35,8 @@ async function run(opts) {
     emoji.emojify(":honeybee: :rocket: Ready for you to complete challenges.")
   );
   console.log();
-  console.log(
-    "  Open a challenge in your favorite editor. Modify and check your code."
-  );
-  console.log(emoji.emojify(`  ${packageManager} test [challenge-name]`));
+  console.log("  You are now ready to download challenges. Try:");
+  console.log(emoji.emojify(`  ${packageManager} get twoSum`));
 }
 
 export default run;
