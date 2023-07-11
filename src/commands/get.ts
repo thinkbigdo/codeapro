@@ -108,7 +108,9 @@ async function run(type, challenge) {
               join(path, "index.ts")
             )} in your favorite editor. Modify and check your code:`
           );
-          console.log(emoji.emojify(`  ${packageManager} test ${challenge}`));
+          console.log(
+            emoji.emojify(`  ${packageManager} run test ${challenge}`)
+          );
         } catch (e) {
           console.log(e.message);
         }
