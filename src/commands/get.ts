@@ -28,9 +28,8 @@ function convertDescriptionToComment(challenge, description) {
     /([A-Z])/g,
     (_, char) => "-" + char.toLowerCase()
   );
-  wrappedLines.push(
-    ` * Solution: https://www.codeapro.com/algos/${challengePath}`
-  );
+  wrappedLines.push("");
+  wrappedLines.push(`Solution: ${HOST}algos/${challengePath}?tab=solution`);
   return wrappedLines.join("\n * ") + "\n */\n\n";
 }
 
