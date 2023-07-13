@@ -14,9 +14,7 @@ const filePath = "";
 async function run(opts) {
   const packageManager = getPkgManager(opts);
 
-  console.log(
-    emoji.emojify(":honeybee: :rocket: Let's code. Code Like a Pro!")
-  );
+  console.log(emoji.emojify(":honeybee: :rocket: Let's code. Code A Pro!"));
   console.log(emoji.emojify(":blue_heart: Checking folder."));
   if (!isFolderEmpty(root, name)) {
     process.exit(1);
