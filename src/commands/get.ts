@@ -3,6 +3,7 @@ import chalk from "chalk";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import getPkgManager from "../helpers/get-pkg-manager";
+import getConfig from "../helpers/get-config";
 
 const HOST = "https://www.codeapro.com/";
 
@@ -45,9 +46,22 @@ async function run(challenge) {
     return;
   }
 
+  const config = await getConfig();
+  const fetchOptions = {
+    headers: {},
+  };
+  if (config.clientKey && typeof config.clientKey === "string") {
+    fetchOptions.headers = {
+      Authorization: `bearer ${config.clientKey}`,
+    };
+  }
+
   try {
     const packageManager = getPkgManager({});
-    const result = await fetch(`${HOST}api/challenges/${challenge}`);
+    const result = await fetch(
+      `${HOST}api/challenges/${challenge}`,
+      fetchOptions
+    );
     if (result.status === 404) {
       console.log(
         `${emoji.emojify(":red_circle:")}  Challenge "${chalk.green(
