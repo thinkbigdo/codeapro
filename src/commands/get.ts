@@ -85,9 +85,9 @@ async function run(challenge) {
           )}.`,
         );
         console.log();
-        console.log("Already purchasedAlgorithms Pro?");
+        console.log("   Already purchasedAlgorithms Pro?");
         console.log(
-          `Paste your Client Key fromt ${chalk.green(
+          `   Paste your Client Key from ${chalk.green(
             "https://www.codeapro.com/users/account",
           )} to your local ${chalk.green("codeapro.config.json")}`,
         );
@@ -116,10 +116,11 @@ async function run(challenge) {
           console.log(
             `  Open ${chalk.green(
               join(path, "index.ts"),
-            )} in your favorite editor and write your solution.`,
+            )} in your favorite editor.`,
           );
+          console.log("  Write your solution.");
           console.log();
-          console.log("Validate your solution:");
+          console.log("  Validate your solution:");
           console.log(chalk.green(`  ${packageManager} run test ${challenge}`));
         } catch (e) {
           console.log(e.message);
