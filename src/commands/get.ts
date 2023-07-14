@@ -124,7 +124,7 @@ async function run(challenge) {
           console.log("   2. Write your solution.");
           console.log("   3. Validate your solution:");
           console.log(
-            chalk.green(`   ${packageManager} run test ${challenge}`),
+            chalk.green(`      ${packageManager} run test ${challenge}`),
           );
         } catch (e) {
           console.log(e.message);
