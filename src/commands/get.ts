@@ -85,12 +85,13 @@ async function run(challenge) {
           )}.`,
         );
         console.log();
-        console.log("   Already purchasedAlgorithms Pro?");
+        console.log("   Already purchased Algorithms Pro?");
         console.log(
-          `   Paste your Client Key from ${chalk.green(
+          `   Copy your Client Key from ${chalk.green(
             "https://www.codeapro.com/users/account",
-          )} to your local ${chalk.green("codeapro.config.json")}`,
+          )}`,
         );
+        console.log(`   Paste it into ${chalk.green("codeapro.config.json")}`);
       } else {
         try {
           mkdirSync(path, { recursive: true });
