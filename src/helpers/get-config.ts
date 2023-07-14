@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 async function getConfig() {
   try {
-    const config = await readFileSync("codeapro.config.json.json", "utf-8");
+    const config = await readFileSync("codeapro.config.json", "utf-8");
     const configObject = JSON.parse(config);
     return configObject;
   } catch (e) {
