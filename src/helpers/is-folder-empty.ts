@@ -35,8 +35,8 @@ function isFolderEmpty(root: string, name: string): boolean {
   if (conflicts.length > 0) {
     console.log(
       `${emoji.emojify(":red_circle:")} The directory ${chalk.green(
-        name
-      )} contains files that could conflict:`
+        name,
+      )} contains files that could conflict:`,
     );
     console.log();
     for (const file of conflicts) {
@@ -53,7 +53,7 @@ function isFolderEmpty(root: string, name: string): boolean {
     }
     console.log();
     console.log(
-      "  Either try using a new directory name, or remove the files listed above."
+      "  Either try using a new directory name, or remove the files listed above.",
     );
     console.log();
     return false;

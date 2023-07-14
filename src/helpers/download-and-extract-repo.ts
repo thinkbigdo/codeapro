@@ -23,10 +23,10 @@ async function downloadTar(url: string) {
 
 async function downloadAndExtractRepo(
   root: string,
-  { username, name, branch, filePath }: RepoInfo
+  { username, name, branch, filePath }: RepoInfo,
 ) {
   const tempFile = await downloadTar(
-    `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`
+    `https://codeload.github.com/${username}/${name}/tar.gz/${branch}`,
   );
 
   await tar.x({
@@ -37,7 +37,7 @@ async function downloadAndExtractRepo(
       p.startsWith(
         `${name}-${branch.replace(/\//g, "-")}${
           filePath ? `/${filePath}/` : "/"
-        }`
+        }`,
       ),
   });
 

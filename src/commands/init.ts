@@ -30,7 +30,7 @@ async function run(opts) {
 
   console.log();
   console.log(
-    emoji.emojify(":honeybee: :rocket: Ready for you to complete challenges.")
+    emoji.emojify(":honeybee: :rocket: Ready for you to complete challenges."),
   );
   console.log();
   console.log("  You are now ready to download challenges. Try:");

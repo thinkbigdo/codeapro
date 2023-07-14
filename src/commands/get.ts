@@ -27,7 +27,7 @@ function convertDescriptionToComment(challenge, description) {
   });
   const challengePath = challenge.replace(
     /([A-Z])/g,
-    (_, char) => "-" + char.toLowerCase()
+    (_, char) => "-" + char.toLowerCase(),
   );
   wrappedLines.push("");
   wrappedLines.push(`Solution: ${HOST}algos/${challengePath}?tab=solution`);
@@ -40,8 +40,8 @@ async function run(challenge) {
   if (existsSync(path)) {
     console.log(
       `${emoji.emojify(
-        ":red_circle:"
-      )} Directory already exists for ${chalk.green(path)}.`
+        ":red_circle:",
+      )} Directory already exists for ${chalk.green(path)}.`,
     );
     return;
   }
@@ -60,29 +60,29 @@ async function run(challenge) {
     const packageManager = getPkgManager({});
     const result = await fetch(
       `${HOST}api/challenges/${challenge}`,
-      fetchOptions
+      fetchOptions,
     );
     if (result.status === 404) {
       console.log(
         `${emoji.emojify(":red_circle:")}  Challenge "${chalk.green(
-          challenge
-        )}" not found.`
+          challenge,
+        )}" not found.`,
       );
     } else {
       const data = await result.json();
       if (!data.tests) {
         console.log(
           `${emoji.emojify(
-            ":red_circle:"
+            ":red_circle:",
           )} Algorithm Pro purchase is required to download the challenge ${chalk.green(
-            challenge
-          )}.`
+            challenge,
+          )}.`,
         );
         console.log();
         console.log(
           `   Learn more at ${chalk.green(
-            "https://www.codeapro.com/purchase"
-          )}.`
+            "https://www.codeapro.com/purchase",
+          )}.`,
         );
       } else {
         try {
@@ -94,25 +94,25 @@ async function run(challenge) {
           writeFileSync(
             join("challenges", "algo", challenge, "index.ts"),
             convertDescriptionToComment(challenge, data.description) +
-              data.userSolution
+              data.userSolution,
           );
           writeFileSync(
             join("challenges", "algo", challenge, "test.ts"),
-            data.tests
+            data.tests,
           );
           console.log(
             `${emoji.emojify(
-              ":honeybee: :rocket:"
-            )} Successfully downloaded ${chalk.green(challenge)}.`
+              ":honeybee: :rocket:",
+            )} Successfully downloaded ${chalk.green(challenge)}.`,
           );
           console.log();
           console.log(
             `  Open ${chalk.green(
-              join(path, "index.ts")
-            )} in your favorite editor. Modify and check your code:`
+              join(path, "index.ts"),
+            )} in your favorite editor. Modify and check your code:`,
           );
           console.log(
-            emoji.emojify(`  ${packageManager} run test ${challenge}`)
+            emoji.emojify(`  ${packageManager} run test ${challenge}`),
           );
         } catch (e) {
           console.log(e.message);

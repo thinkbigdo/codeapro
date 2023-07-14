@@ -3,13 +3,13 @@ import chalk from "chalk";
 import { existsSync } from "node:fs";
 
 function isFolderCodeapro(): boolean {
-  if (!existsSync(".codeapro.json")) {
+  if (!existsSync("codeapro.config.json.json")) {
     console.log(
       `${emoji.emojify(
-        ":red_circle:"
+        ":red_circle:",
       )} The directory  does not contain a ${chalk.green(
-        ".codeapro.json"
-      )} file.`
+        "codeapro.config.json.json",
+      )} file.`,
     );
     return false;
   }

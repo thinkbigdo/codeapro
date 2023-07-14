@@ -51,7 +51,7 @@ function run() {
             ...process.env,
             SOLUTION_FILE: solutionFile,
           },
-        }
+        },
       );
       runner.on("exit", () => {
         runningTests = false;
