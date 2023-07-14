@@ -84,6 +84,13 @@ async function run(challenge) {
             "https://www.codeapro.com/purchase",
           )}.`,
         );
+        console.log();
+        console.log("Already purchasedAlgorithms Pro?");
+        console.log(
+          `Paste your Client Key fromt ${chalk.green(
+            "https://www.codeapro.com/users/account",
+          )} to your local ${chalk.green("codeapro.config.json")}`,
+        );
       } else {
         try {
           mkdirSync(path, { recursive: true });
@@ -109,11 +116,11 @@ async function run(challenge) {
           console.log(
             `  Open ${chalk.green(
               join(path, "index.ts"),
-            )} in your favorite editor. Modify and check your code:`,
+            )} in your favorite editor and write your solution.`,
           );
-          console.log(
-            emoji.emojify(`  ${packageManager} run test ${challenge}`),
-          );
+          console.log();
+          console.log("Validate your solution:");
+          console.log(chalk.green(`  ${packageManager} run test ${challenge}`));
         } catch (e) {
           console.log(e.message);
         }
