@@ -80,9 +80,7 @@ async function run(challenge) {
         );
         console.log();
         console.log(
-          `   Learn more at ${chalk.green(
-            "https://www.codeapro.com/purchase",
-          )}.`,
+          `   Learn more at ${chalk.green("https://www.codeapro.com/plans")}.`,
         );
         console.log();
         console.log("   Already purchased Algorithms Pro?");
