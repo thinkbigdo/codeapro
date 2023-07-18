@@ -30,12 +30,14 @@ function convertDescriptionToComment(challenge, description) {
     (_, char) => "-" + char.toLowerCase(),
   );
   wrappedLines.push("");
-  wrappedLines.push(`Solution: ${HOST}algos/${challengePath}?tab=solution`);
+  wrappedLines.push(
+    `Solution: ${HOST}challenges/algorithms/${challengePath}?tab=solution`,
+  );
   return wrappedLines.join("\n * ") + "\n */\n\n";
 }
 
 async function run(challenge) {
-  const path = join("challenges", "algo", challenge);
+  const path = join("challenges", "algorithms", challenge);
 
   if (existsSync(path)) {
     console.log(
@@ -100,12 +102,12 @@ async function run(challenge) {
         }
         try {
           writeFileSync(
-            join("challenges", "algo", challenge, "index.ts"),
+            join("challenges", "algorithms", challenge, "index.ts"),
             convertDescriptionToComment(challenge, data.description) +
               data.userSolution,
           );
           writeFileSync(
-            join("challenges", "algo", challenge, "test.ts"),
+            join("challenges", "algorithms", challenge, "test.ts"),
             data.tests,
           );
           console.log(

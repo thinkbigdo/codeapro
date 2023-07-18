@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { dirname, sep, join } from "node:path";
 
 function run(challenge, solution) {
-  const types = ["algo", "frontend"];
+  const types = ["algorithms", "frontend"];
   const files = ["test.ts", "test.tsx", "test.js"];
   let testArg = challenge ? challenge.split(sep) : [];
   let solutionArg = `${solution ? solution : "index"}`;
