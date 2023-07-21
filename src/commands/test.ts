@@ -55,11 +55,11 @@ function run(challenge: string, solution: string) {
     }
     if (!hasMatch) {
       console.log("The challenge you specified does not exist.");
-      process.exit(1);
+      return process.exit(1);
     }
   } else if (testArg.length === 0) {
     console.log("Test name missing.");
-    process.exit(1);
+    return process.exit(1);
   }
 
   console.log(testFile);
