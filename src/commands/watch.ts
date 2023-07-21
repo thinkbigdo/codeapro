@@ -10,7 +10,7 @@ function run() {
 
   console.log(`Watching for file changes on ${challengesDir}`);
 
-  let md5Files = {};
+  let md5Files: Record<string, string> = {};
   let fsWait: NodeJS.Timeout | boolean = false;
   let runningTests = false;
   watch(challengesDir, { recursive: true }, (event, filename) => {

@@ -1,6 +1,10 @@
 type PackageManager = "npm" | "pnpm" | "yarn";
 
-export default function getPkgManager(opts): PackageManager {
+export default function getPkgManager(opts: {
+  useNpm?: boolean;
+  usePnpm?: boolean;
+  useYarn?: boolean;
+}): PackageManager {
   const packageManager = opts.useNpm
     ? "npm"
     : opts.usePnpm

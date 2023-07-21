@@ -2,7 +2,7 @@ import emoji from "node-emoji";
 import chalk from "chalk";
 import { spawnSync } from "node:child_process";
 
-export default function initPackages(packageManager) {
+export default function initPackages(packageManager: "npm" | "yarn" | "pnpm") {
   const installProcess = spawnSync(packageManager, ["install"], {
     stdio: "inherit",
     shell: true,

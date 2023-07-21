@@ -7,7 +7,7 @@ import getConfig from "../helpers/get-config";
 
 const HOST = "https://www.codeapro.com/";
 
-function convertDescriptionToComment(challenge, description) {
+function convertDescriptionToComment(challenge: string, description: string) {
   const lines = description.split("\n");
   const wrappedLines: Array<string> = ["/*"];
   const maxLineLen = 64;
@@ -36,7 +36,7 @@ function convertDescriptionToComment(challenge, description) {
   return wrappedLines.join("\n * ") + "\n */\n\n";
 }
 
-async function run(challenge) {
+async function run(challenge: string) {
   const path = join("challenges", "algorithms", challenge);
 
   if (existsSync(path)) {
@@ -45,7 +45,7 @@ async function run(challenge) {
         ":red_circle:",
       )} Directory already exists for ${chalk.green(path)}.`,
     );
-    return;
+    return process.exit(1);
   }
 
   const config = await getConfig();
@@ -70,6 +70,7 @@ async function run(challenge) {
           challenge,
         )}" not found.`,
       );
+      return process.exit(1);
     } else {
       const data = await result.json();
       if (!data.tests) {
@@ -127,12 +128,14 @@ async function run(challenge) {
             chalk.green(`      ${packageManager} run test ${challenge}`),
           );
         } catch (e) {
-          console.log(e.message);
+          console.log((e as Record<string, string>).message);
+          process.exit(1);
         }
       }
     }
   } catch (e) {
-    console.log(e.message);
+    console.log((e as Record<string, string>).message);
+    process.exit(1);
   }
 }
 

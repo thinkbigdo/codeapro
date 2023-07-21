@@ -1,2 +1,4 @@
 node_modules
 dist
+cap-test
+.DS_Store

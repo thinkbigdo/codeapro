@@ -2,12 +2,12 @@ import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
 import { dirname, sep, join } from "node:path";
 
-function run(challenge, solution) {
+function run(challenge: string, solution: string) {
   const types = ["algorithms", "frontend"];
   const files = ["test.ts", "test.tsx", "test.js"];
   let testArg = challenge ? challenge.split(sep) : [];
   let solutionArg = `${solution ? solution : "index"}`;
-  let testFile;
+  let testFile: string = "";
   let solutionFile;
 
   if (testArg.length > 3) {
@@ -65,13 +65,23 @@ function run(challenge, solution) {
   console.log(testFile);
   console.log(solutionFile);
 
-  spawn(join(".", "node_modules", ".bin", "jest"), [testFile], {
-    stdio: "inherit",
-    shell: true,
-    env: {
-      ...process.env,
-      SOLUTION_FILE: solutionFile,
+  const testProcess = spawn(
+    join(".", "node_modules", ".bin", "jest"),
+    [testFile],
+    {
+      stdio: "inherit",
+      shell: true,
+      env: {
+        ...process.env,
+        SOLUTION_FILE: solutionFile,
+      },
     },
+  );
+
+  testProcess.on("exit", (code) => {
+    if (code !== null) {
+      process.exit(code);
+    }
   });
 }
 
