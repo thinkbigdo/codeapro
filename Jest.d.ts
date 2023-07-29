@@ -4,10 +4,10 @@ export {};
 
 type solutionType = {
   bigOs: () => Record<string, { time: string; space: string }>;
-  solns: Record<string, (T, V?) => number | boolean | string | Array<any>>;
+  solns: Record<string, (T, U?, V?, W?) => S>;
   bigO: () => { time: string; space: string };
-  run: (T, V?) => number | boolean | string | Array<any>;
-  default: (T, V?) => number | boolean | string | Array<any>;
+  run: (T, U?, V?, W?) => S;
+  default: (T, U?, V?, W?) => S;
 };
 
 declare global {
