@@ -1,6 +1,6 @@
-type SingleLinkedListType = {
-  value: number;
-  next: SingleLinkedListType | null;
+type SingleLinkedListType<T> = {
+  value: T;
+  next: SingleLinkedListType<T> | null;
 };
 
 export default SingleLinkedListType;
