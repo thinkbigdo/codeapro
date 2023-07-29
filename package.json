@@ -13,7 +13,7 @@
     "test": "jest",
     "dressup": "prettier --write .",
     "build": "swc src -d dist",
-    "publish": "npm run build && npm run test && npm version patch && npm publish --access public"
+    "publishMe": "npm run build && npm run test && npm version patch && npm publish --access public"
   },
   "author": "Code A Pro LLC",
   "license": "UNLICENSED",
