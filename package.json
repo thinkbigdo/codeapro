@@ -1,6 +1,6 @@
 {
   "name": "codeapro",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Code A Pro CLI.",
   "files": [
     "dist"
@@ -8,6 +8,7 @@
   "bin": {
     "capro": "./dist/index.js"
   },
+  "types": "types/types.d.ts",
   "scripts": {
     "test": "jest",
     "dressup": "prettier --write .",
