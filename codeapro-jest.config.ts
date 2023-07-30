@@ -6,6 +6,6 @@ export default async (): Promise<Config> => {
     transform: {
       "^.+\\.(t|j)sx?$": "@swc/jest",
     },
-    setupFilesAfterEnv: [join(__dirname, "codeapro-jest.setup.ts")],
+    setupFilesAfterEnv: [join(__dirname, "codeapro-jest.setup.js")],
   };
 };

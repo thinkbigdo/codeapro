@@ -6,8 +6,9 @@
     "dist",
     "types",
     "jest.d.ts",
-    "codeapro-jest.config.ts",
-    "codeapro-jest.setup.ts"
+    "codeapro-jest.conofig.d.ts",
+    "codeapro-jest.config.js",
+    "codeapro-jest.setup.js"
   ],
   "bin": {
     "capro": "./dist/index.js"
@@ -16,7 +17,7 @@
   "scripts": {
     "test": "jest",
     "dressup": "prettier --write .",
-    "build": "swc src -d dist",
+    "build": "swc src -d dist && swc codeapro-jest.config.ts -o codeapro-jest.config.js && swc codeapro-jest.setup.ts -o codeapro-jest.setup.js",
     "publishMe": "npm run build && npm run test && npm version patch && npm publish --access public"
   },
   "author": "Code A Pro LLC",

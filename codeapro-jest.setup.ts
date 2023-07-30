@@ -1,4 +1,5 @@
 import * as matchers from "jest-extended";
+import { join } from "node:path";
 
 expect.extend(matchers);
 
@@ -64,7 +65,9 @@ function isClass(asset) {
 }
 
 beforeAll(async () => {
-  global.soln = await import("./challenges/" + process.env.SOLUTION_FILE);
+  global.soln = await import(
+    join(process.cwd(), "challenges", process.env.SOLUTION_FILE!)
+  );
   if (isClass(global.soln.default) || typeof global.soln.default === "object") {
     global.soln.bigOs = global.soln.bigO;
     global.soln.solns = global.soln.default;

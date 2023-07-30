@@ -1,4 +1,6 @@
 node_modules
 dist
 cap-test
+codeapro-jest.config.js
+codeapro-jest.setup.js
 .DS_Store
