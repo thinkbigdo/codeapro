@@ -5,7 +5,9 @@
   "files": [
     "dist",
     "types",
-    "Jest.d.ts"
+    "jest.d.ts",
+    "codeapro-jest.config.ts",
+    "codeapro-jest.setup.ts"
   ],
   "bin": {
     "capro": "./dist/index.js"
