@@ -6,7 +6,7 @@
     "dist",
     "types",
     "jest.d.ts",
-    "codeapro-jest.conofig.d.ts",
+    "codeapro-jest.config.d.ts",
     "codeapro-jest.config.js",
     "codeapro-jest.setup.js"
   ],
