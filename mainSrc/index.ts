@@ -91,6 +91,7 @@ class GenericHeap<T> {
 
   insert(value: T) {
     this.heap.push(value);
+    this.entryMap[this.getEntryIndex(value)] = this.heap.length - 1;
     this.siftUp();
   }
 
