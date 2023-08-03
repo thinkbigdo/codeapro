@@ -5,8 +5,9 @@
   "files": [
     "dist",
     "mainDist",
-    "types",
+    "dsTypes",
     "jest.d.ts",
+    "codeapro.d.ts",
     "codeapro-jest.config.d.ts",
     "codeapro-jest.config.js",
     "codeapro-jest.setup.js"
@@ -15,7 +16,7 @@
   "bin": {
     "capro": "./dist/index.js"
   },
-  "types": "types/types.d.ts",
+  "types": "codeapro.d.ts",
   "scripts": {
     "test": "jest",
     "dressup": "prettier --write .",
