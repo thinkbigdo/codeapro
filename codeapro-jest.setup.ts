@@ -3,7 +3,10 @@ import { join } from "node:path";
 
 expect.extend(matchers);
 
-function toBeOneOf(value, choices) {
+function toBeOneOf(
+  value: { time: string; space: string },
+  choices: Array<{ time: string; space: string }>,
+) {
   for (let i = 0; i < choices.length; i++) {
     const choice = choices[i];
     if (value.time === choice.time && value.space === choice.space) {
@@ -23,7 +26,7 @@ expect.extend({
   toBeOneOf,
 });
 
-function isClass(asset) {
+function isClass(asset: unknown) {
   const string_match = "function";
 
   const is_fn = !!(typeof asset === string_match);

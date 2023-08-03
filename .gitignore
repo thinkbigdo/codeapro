@@ -1,5 +1,6 @@
 node_modules
 dist
+mainDist
 cap-test
 codeapro-jest.config.js
 codeapro-jest.setup.js
