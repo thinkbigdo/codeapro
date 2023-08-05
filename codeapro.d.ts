@@ -8,16 +8,19 @@ declare class GenericHeap<T> {
     array,
     comparator = (a, b) => a < b,
     getEntryIndex = (entry) => entry as number,
+    useEntryMap = false,
   }: {
     array: Array<T>;
     comparator: (a: T, b: T) => boolean;
     getEntryIndex: (entry: T) => number;
+    useEntryMap: boolean;
   }): void;
   public BuildHeap(): void;
   public SiftDown(currentI: number): void;
   public SiftUp(currentI: number): void;
   public update(entryIndex: number, handler: (entry: T) => T);
   public peek(): T;
+  public removeToEnd(): T;
   public remove(): T;
   public insert(value: T);
   public isEmpty(): boolean;

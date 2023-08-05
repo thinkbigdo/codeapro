@@ -82,10 +82,11 @@ class GenericHeap<T> {
       this.heap[this.entryMap[entryIndex]] = handler(
         this.heap[this.entryMap[entryIndex]],
       );
+      this.siftUp(this.entryMap[entryIndex]);
     } else {
       this.heap[entryIndex] = handler(this.heap[entryIndex]);
+      this.siftUp(entryIndex);
     }
-    this.siftUp(entryIndex);
   }
 
   peek() {
