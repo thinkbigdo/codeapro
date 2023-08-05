@@ -13,7 +13,7 @@ declare class GenericHeap<T> {
     array: Array<T>;
     comparator: (a: T, b: T) => boolean;
     getEntryIndex: (entry: T) => number;
-    useEntryMap: boolean;
+    useEntryMap?: boolean;
   }): void;
   public BuildHeap(): void;
   public SiftDown(currentI: number): void;
