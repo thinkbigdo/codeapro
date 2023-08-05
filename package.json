@@ -1,6 +1,6 @@
 {
   "name": "codeapro",
-  "version": "0.0.52",
+  "version": "0.0.53",
   "description": "Code A Pro CLI.",
   "files": [
     "dist",
