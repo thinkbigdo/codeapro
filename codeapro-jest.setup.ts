@@ -22,8 +22,46 @@ function toBeOneOf(
   };
 }
 
+function toIncludeSameMemberArrays(
+  value: Array<Array<number>>,
+  expected: Array<Array<number>>,
+  target: number,
+) {
+  if (value.length !== expected.length) {
+    return {
+      message: () => "Input length does not match expected length",
+      pass: false,
+    };
+  }
+
+  function sort(arrays: Array<Array<number>>): Array<Array<number>> {
+    for (let i = 0; i < arrays.length; i++) {
+      arrays[i].sort((a, b) => a - b);
+    }
+    return arrays;
+  }
+
+  sort(value);
+  sort(expected);
+
+  try {
+    expect(value).toIncludeSameMembers(expected);
+  } catch (e: any) {
+    return {
+      message: () => e.message,
+      pass: false,
+    };
+  }
+
+  return {
+    message: () => "Mission complete",
+    pass: true,
+  };
+}
+
 expect.extend({
   toBeOneOf,
+  toIncludeSameMemberArrays,
 });
 
 function isClass(asset: unknown) {
