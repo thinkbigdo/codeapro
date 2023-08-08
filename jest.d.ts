@@ -19,7 +19,7 @@ declare global {
         expected: Array<number>,
         target: number,
       ): R;
-      toIncludeSameMemberArrays(expected: Array<Array<number>>): R;
+      toIncludeSameMemberArrays(expected: Array<Array<T>>): R;
     }
   }
 }
