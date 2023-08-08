@@ -22,10 +22,9 @@ function toBeOneOf(
   };
 }
 
-function toIncludeSameMemberArrays(
-  value: Array<Array<number>>,
-  expected: Array<Array<number>>,
-  target: number,
+function toIncludeSameMemberArrays<T>(
+  value: Array<Array<T>>,
+  expected: Array<Array<T>>,
 ) {
   if (value.length !== expected.length) {
     return {
@@ -34,9 +33,13 @@ function toIncludeSameMemberArrays(
     };
   }
 
-  function sort(arrays: Array<Array<number>>): Array<Array<number>> {
+  function sort(arrays: Array<Array<T>>): Array<Array<T>> {
     for (let i = 0; i < arrays.length; i++) {
-      arrays[i].sort((a, b) => a - b);
+      if (arrays[i].length && typeof arrays[i][0] === "number") {
+        arrays[i].sort((a, b) => (a as number) - (b as number));
+      } else {
+        arrays[i].sort();
+      }
     }
     return arrays;
   }
